@@ -17,8 +17,10 @@ body {
     left: 50%; /* Center horizontally */
     top: 50%; /* Center vertically */
     transform: translate(-50%, -50%); /* Adjust position to center */
-    width: 600px; /* Adjust width as needed */
-    height: 700px; /* Adjust height as needed */
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 600px; /* Maximum width */
+    height: 80%; /* Adjust height for smaller screens */
+    max-height: 700px; /* Maximum height */
     background-color: #fff;
     border-radius: 15px;
     display: none; /* Initially hidden */
@@ -32,7 +34,6 @@ body.show-chatbot .chatbot-popup {
     transform: translate(-50%, -50%); /* Keep it centered */
 }
 
-
 .chat-body {
     padding: 25px 30px; /* Adjust padding to fit the new width */
     display: flex;
@@ -43,14 +44,12 @@ body.show-chatbot .chatbot-popup {
     margin-bottom: 82px;
     scrollbar-width: thin;
     scrollbar-color: #ccccf5 transparent;
-  
 }
-
 
 .chat-header {
     display: flex;
     align-items: center;
-    background:purple;
+    background: purple;
     padding: 15px 22px;
     justify-content: space-between;
     border-radius: 20px 20px 0 0;
@@ -95,8 +94,6 @@ body.show-chatbot .chatbot-popup {
 .chat-header #close-chatbot:hover {
     background-color: rgb(192, 93, 192);
 }
-
-
 
 .chat-body .message {
     display: flex;
@@ -231,7 +228,6 @@ body.show-chatbot .chatbot-popup {
     scrollbar-color: #ccccf5 transparent;
 }
 
-
 .chat-form .chat-controls {
     display: flex;
     height: 47px;
@@ -317,4 +313,55 @@ em-emoji-picker {
 
 body.show-emoji-picker em-emoji-picker {
     visibility: visible;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .chat-body {
+        padding: 15px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .chat-header {
+        padding: 10px 15px; /* Adjust header padding */
+    }
+
+    .chat-header .logo-text {
+        font-size: 1.1rem; /* Smaller logo text */
+    }
+
+    .chat-body .message .message-text {
+        max-width: 90%; /* Allow more width for messages */
+    }
+
+    .chat-footer .chat-form {
+        padding: 5px; /* Adjust footer padding */
+    }
+
+    .chat-form .message-input {
+        padding: 10px; /* Adjust input padding */
+    }
+
+    .chat-form .chat-controls button {
+        height: 30px; /* Smaller button size */
+        width: 30px; /* Smaller button size */
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-popup {
+        width: 95%; /* Full width on very small screens */
+        height: 90%; /* Full height on very small screens */
+    }
+
+    .chat-body {
+        height: 400px; /* Adjust height for very small screens */
+    }
+
+    .chat-body .message .message-text {
+        max-width: 100%; /* Full width for messages */
+    }
+
+    .chat-header .logo-text {
+        font-size: 1rem; /* Even smaller logo text */
+    }
 }

@@ -404,7 +404,7 @@ body.show-emoji-picker em-emoji-picker {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #000;
+    background:pink;
     color: #fff;
     padding: 8px 12px;
     font-size: 14px;
@@ -418,3 +418,12 @@ body.show-emoji-picker em-emoji-picker {
 .theme-toggle:hover {
     background: #444;
 }
+
+body.day-mode .day-text {
+    color: black;
+}
+
+body.night-mode .day-text {
+    color: white;
+}
+

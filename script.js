@@ -272,8 +272,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.add(theme);
             textElement.textContent = theme === "day-mode" ? "Day Mode" : "Night Mode";
             localStorage.setItem("theme", theme);
+        
+            // Change input text color manually (optional, CSS is better)
+            messageInput.style.color = "#000"; // Always black text
+            messageInput.style.backgroundColor = theme === "night-mode" ? "#fff" : "#fff";
         };
-    
+        
         // Apply saved theme on load
         const savedTheme = localStorage.getItem("theme") || "day-mode";
         applyTheme(savedTheme);

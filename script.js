@@ -173,11 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    messageInput.addEventListener("input", () => {
-        messageInput.style.height = `${initialInputHeight}px`;
-        messageInput.style.height = `${messageInput.scrollHeight}px`;
-        document.querySelector(".chat-form").style.borderRadius = messageInput.scrollHeight > initialInputHeight ? "15px" : "32px";
-    });
+    const adjustTextareaHeight = () => {
+        messageInput.style.height = 'auto'; // Reset height to auto to calculate new height
+        messageInput.style.height = `${Math.min(messageInput.scrollHeight, 180)}px`; // Set height to scrollHeight or max height
+    };
+    
 
     // Handle file selection
     fileInput.addEventListener("change", () => {
@@ -259,5 +259,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close chatbot
     closeChatbot.addEventListener("click", () => {
         document.body.classList.remove("show-chatbot");
+
+
+
     });
+    window.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("theme-toggle");
+        const textElement = toggleBtn.querySelector(".day-text");
+    
+        const applyTheme = (theme) => {
+            document.body.classList.remove("day-mode", "night-mode");
+            document.body.classList.add(theme);
+            textElement.textContent = theme === "day-mode" ? "Day Mode" : "Night Mode";
+            localStorage.setItem("theme", theme);
+        };
+    
+        // Apply saved theme on load
+        const savedTheme = localStorage.getItem("theme") || "day-mode";
+        applyTheme(savedTheme);
+    
+        // Toggle theme and update text on button click
+        toggleBtn.addEventListener("click", () => {
+            const currentTheme = document.body.classList.contains("day-mode") ? "day-mode" : "night-mode";
+            const newTheme = currentTheme === "day-mode" ? "night-mode" : "day-mode";
+            applyTheme(newTheme);
+        });
+    });
+
 });
